@@ -3,6 +3,8 @@
 ## Introduction
 Single-purpose site that answers the question "Can I breathe here?".
 
+See the site at http://canibreathehere.com/ .
+
 ## Installation
 First, install Composer:
 
