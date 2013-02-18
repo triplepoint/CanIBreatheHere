@@ -1,9 +1,9 @@
 # Can I Breathe Here
+master: [![Build Status](https://travis-ci.org/triplepoint/CanIBreatheHere.png?branch=master)](https://travis-ci.org/triplepoint/CanIBreatheHere)
 
 ## Introduction
 Single-purpose site that answers the question "Can I breathe here?".
-
-See the site at http://canibreathehere.com/ .
+- See the site at http://canibreathehere.com/ .
 
 ## Installation
 First, install Composer:
@@ -26,9 +26,11 @@ For production, leave out the dev dependencies and optimize the autoloader:
 ## Testing and Development
 ### Continuous Integration
 Continuous integration is handled through Travis-CI.
+- https://travis-ci.org/triplepoint/CanIBreatheHere
 
 ### API Documentation
 API documentation (such as it is) is handled through GitApiDoc.
+- http://gitapidoc.com/api/triplepoint/CanIBreatheHere
 
 ### Unit Tests
 All the tests associated with this project can be manually run with:
