@@ -58,10 +58,10 @@ $app->run();
 /**
  * Given the altitude and temperature, find the atmospheric pressure
  *
- * @param \PhpUnitsOfMeasure\Length      $altitude    height above sea level, in meters
- * @param \PhpUnitsOfMeasure\Temperature $temperature temperature, in Kelvin
+ * @param \PhpUnitsOfMeasure\PhysicalQuantity\Length      $altitude    height above sea level, in meters
+ * @param \PhpUnitsOfMeasure\PhysicalQuantity\Temperature $temperature temperature, in Kelvin
  *
- * @return \PhpUnitsOfMeasure\Pressure   the atmospheric pressure, in mbar
+ * @return \PhpUnitsOfMeasure\PhysicalQuantity\Pressure   the atmospheric pressure, in mbar
  */
 function getAtmosphericPressure(Length $altitude, Temperature $temperature)
 {
@@ -94,7 +94,7 @@ function getAtmosphericPressure(Length $altitude, Temperature $temperature)
  * Answer, as best as possible, the question "Is the
  * air breathable here?".
  *
- * @param  \PhpUnitsOfMeasure\Pressure $atmospheric_pressure Atmospheric pressure in mbar
+ * @param  \PhpUnitsOfMeasure\PhysicalQuantity\Pressure $atmospheric_pressure Atmospheric pressure in mbar
  *
  * @return string Yes, Maybe, or Nope, depending
  */
@@ -123,7 +123,7 @@ function isBreathable(Pressure $atmospheric_pressure)
  * @param  float $latitude  Latitude in decimal degrees
  * @param  float $longitude Longitude in decimal degrees
  *
- * @return \PhpUnitsOfMeasure\Length altitude above sea level
+ * @return \PhpUnitsOfMeasure\PhysicalQuantity\Length altitude above sea level
  */
 function getAltitude($latitude, $longitude)
 {
