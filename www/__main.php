@@ -63,7 +63,7 @@ $app->run();
  *
  * @return \PhpUnitsOfMeasure\Pressure   the atmospheric pressure, in mbar
  */
-function getAtmosphericPressure( Length $altitude, Temperature $temperature )
+function getAtmosphericPressure(Length $altitude, Temperature $temperature)
 {
     // Thanks, wikipedia: http://en.wikipedia.org/wiki/Vertical_pressure_variation#In_the_context_of_Earth.27s_atmosphere
 
@@ -98,7 +98,7 @@ function getAtmosphericPressure( Length $altitude, Temperature $temperature )
  *
  * @return string Yes, Maybe, or Nope, depending
  */
-function isBreathable( Pressure $atmospheric_pressure )
+function isBreathable(Pressure $atmospheric_pressure)
 {
     if ($atmospheric_pressure->toUnit('Pa') > 80609 ) {
         // Roughly equivalent to 6000' and below
