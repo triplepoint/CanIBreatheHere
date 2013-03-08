@@ -11,9 +11,9 @@ mb_internal_encoding('UTF-8');
 
 require 'vendor/autoload.php';
 
-use \PhpUnitsOfMeasure\Length;
-use \PhpUnitsOfMeasure\Temperature;
-use \PhpUnitsOfMeasure\Pressure;
+use \PhpUnitsOfMeasure\PhysicalQuantity\Length;
+use \PhpUnitsOfMeasure\PhysicalQuantity\Temperature;
+use \PhpUnitsOfMeasure\PhysicalQuantity\Pressure;
 
 $app = new Silex\Application();
 
