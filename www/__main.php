@@ -100,11 +100,11 @@ function getAtmosphericPressure(Length $altitude, Temperature $temperature)
  */
 function isBreathable(Pressure $atmospheric_pressure)
 {
-    if ($atmospheric_pressure->toUnit('Pa') > 80609 ) {
+    if ($atmospheric_pressure->toUnit('Pa') > 80609) {
         // Roughly equivalent to 6000' and below
         return 'Yes';
 
-    } else if ($atmospheric_pressure->toUnit('Pa') > 69208 ) {
+    } else if ($atmospheric_pressure->toUnit('Pa') > 69208) {
         // roughly between 6000' and 10,000'
         return 'Maybe';
 
