@@ -79,39 +79,18 @@ class BreathableAir
      * Also, the altitude is cached after the first request, to cut down on redundant
      * API requests.
      *
-     * @throws \Exception if the curl request fails
-     * @throws \Exception if the curl request returns a status code other than 200
-     * @throws \Exception if the curl response doesn't have parseable XML
-     * @throws \Exception if the curl response has too many height elements in it
+     * @throws \Exception if the API response doesn't have parseable XML
+     * @throws \Exception if the API response has too many height elements in it
      *
      * @return \PhpUnitsOfMeasure\PhysicalQuantity\Length altitude above sea level
      */
     public function getAltitude()
     {
         if (!$this->altitude) {
-
-            $ch = curl_init();
-            if (!$ch) {
-                throw new \Exception('Error initializing curl resource.');
-            }
-
-            curl_setopt($ch, CURLOPT_URL, 'http://www.earthtools.org/height/'.$this->latitude.'/'.$this->longitude);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-            $return = curl_exec($ch);
-            if ($return === false) {
-                throw new \Exception('Error performing curl request.');
-            }
-
-            if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
-                throw new \Exception('HTTP status code other than 200 returned.');
-            }
-
-            curl_close($ch);
+            $response = $this->fetchRawHeightFromEarthTools($this->latitude, $this->longitude);
 
             $doc = new \DOMDocument();
-            $doc->loadXML($return);
+            $doc->loadXML($response);
             if ($doc === false) {
                 throw new \Exception('Error parsing XML response.');
             }
@@ -127,6 +106,42 @@ class BreathableAir
         }
 
         return $this->altitude;
+    }
+
+    /**
+     * Given a latitude and longitude, fetch the height data from earthtools.org
+     *
+     * @param  float $latitude
+     * @param  float $longitude
+     *
+     * @throws \Exception if the curl request fails
+     * @throws \Exception if the curl request returns a status code other than 200
+     *
+     * @return string the response from earthtools
+     */
+    protected function fetchRawHeightFromEarthTools($latitude, $longitude)
+    {
+        $ch = curl_init();
+        if (!$ch) {
+            throw new \Exception('Error initializing curl resource.');
+        }
+
+        curl_setopt($ch, CURLOPT_URL, 'http://www.earthtools.org/height/'.$this->latitude.'/'.$this->longitude);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $return = curl_exec($ch);
+        if ($return === false) {
+            throw new \Exception('Error performing curl request.');
+        }
+
+        if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
+            throw new \Exception('HTTP status code other than 200 returned.');
+        }
+
+        curl_close($ch);
+
+        return $return;
     }
 
     /**
