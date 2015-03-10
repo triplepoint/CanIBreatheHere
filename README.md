@@ -28,10 +28,6 @@ For production, leave out the dev dependencies and optimize the autoloader:
 Continuous integration is handled through Travis-CI.
 - https://travis-ci.org/triplepoint/CanIBreatheHere
 
-### API Documentation
-API documentation (such as it is) is handled through GitApiDoc.
-- http://gitapidoc.com/api/triplepoint/CanIBreatheHere
-
 ### Unit Tests
 All the tests associated with this project can be manually run with:
 
