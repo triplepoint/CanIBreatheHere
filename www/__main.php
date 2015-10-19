@@ -25,19 +25,30 @@ $app->get(
 
         $breathable_air = new BreathableAir($latitude, $longitude);
 
-        $data = array(
+        $data = [
             'latitude'             => $latitude,
             'longitude'            => $longitude,
             'temperature'          => (string) $breathable_air->getTemperature(),
             'altitude'             => (string) $breathable_air->getAltitude(),
             'atmospheric_pressure' => (string) $breathable_air->getAtmosphericPressure(),
             'breathability'        => $breathable_air->isBreathable()
-        );
+        ];
 
         $data['html'] = (new Mustache_Engine())->render(
             file_get_contents('www/resources/templates/yes.mustache'),
             $data
         );
+
+        return json_encode($data);
+    }
+);
+
+$app->get(
+    '/api/v1/ping',
+    function () {
+        $data = [
+            'result' => 'pong'
+        ];
 
         return json_encode($data);
     }
