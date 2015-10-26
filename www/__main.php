@@ -16,6 +16,10 @@ use \PhpUnitsOfMeasure\PhysicalQuantity\Temperature;
 
 $app = new Silex\Application();
 
+$app->register(new Silex\Provider\MonologServiceProvider(), [
+    'monolog.logfile' => 'logs/site_error.log',
+]);
+
 $app->get(
     '/api/v1/getBreathability/{latitude}/{longitude}',
     function ($latitude, $longitude) use ($app) {
