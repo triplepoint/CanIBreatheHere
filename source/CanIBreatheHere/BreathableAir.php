@@ -126,7 +126,7 @@ class BreathableAir
             throw new \Exception('Error initializing curl resource.');
         }
 
-        curl_setopt($ch, CURLOPT_URL, 'http://www.earthtools.org/height/'.$this->latitude.'/'.$this->longitude);
+        curl_setopt($ch, CURLOPT_URL, 'http://new.earthtools.org/height/'.$this->latitude.'/'.$this->longitude);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
