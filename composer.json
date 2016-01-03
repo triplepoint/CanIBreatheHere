@@ -27,7 +27,7 @@
     },
 
     "require": {
-        "php":                                       ">=5.4",
+        "php":                                       ">=5.5",
         "silex/silex":                               "1.0.*@dev",
         "triplepoint/php-units-of-measure":          "1.1",
         "mustache/mustache":                         "2.1.*",
@@ -35,13 +35,19 @@
     },
 
     "require-dev": {
-        "phpunit/phpunit":                           "3.7.*",
-        "squizlabs/php_codesniffer":                 "1.4.*"
+        "phpunit/phpunit":                           "5.1.*",
+        "squizlabs/php_codesniffer":                 "2.5.*"
     },
 
     "autoload": {
-        "psr-0": {
-            "CanIBreatheHere": "source/"
+        "psr-4": {
+            "CanIBreatheHere\\": "source/"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "CanIBreatheHereTest\\": "tests/"
         }
     }
 }
